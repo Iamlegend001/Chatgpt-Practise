@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Create account</title>
+    <link rel="stylesheet" href="/styles/variables.css" />
+    <link rel="stylesheet" href="/styles/auth-form.css" />
+  </head>
+  <body>
+    <main class="auth-container">
+      <form
+        class="auth-form"
+        method="POST"
+        action="/auth/register"
+        autocomplete="off"
+        aria-labelledby="registerTitle"
+        id="registerForm"
+        role="form"
+      >
+        <h1 id="registerTitle" class="auth-title">Create account</h1>
+        <p class="lead">Minimal, secure, and mobile-first.</p>
+
+        <% if (typeof error !== 'undefined' && error) { %>
+        <div class="error-text" role="alert"><%= error %></div>
+        <% } %>
+
+        <label class="field" for="email">
+          <span class="label-text">Email</span>
+          <div class="input-with-action">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              inputmode="email"
+              autocomplete="email"
+              placeholder="you@domain.com"
+              aria-describedby="emailHelp"
+              value="<%= typeof formData !== 'undefined' && formData.email ? formData.email : '' %>"
+            />
+          </div>
+          <small id="emailHelp" class="helper-text"
+            >We'll use this to sign you in.</small
+          >
+        </label>
+
+        <label class="field" for="username">
+          <span class="label-text">Username</span>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            required
+            minlength="3"
+            maxlength="30"
+            pattern="^[A-Za-z0-9_]+$"
+            autocomplete="username"
+            placeholder="your_username"
+            aria-describedby="usernameHelp"
+            value="<%= typeof formData !== 'undefined' && formData.username ? formData.username : '' %>"
+          />
+          <small id="usernameHelp" class="helper-text"
+            >3–30 characters. Letters, numbers and underscores only.</small
+          >
+        </label>
+
+        <label class="field" for="password">
+          <span class="label-text">Password</span>
+          <div class="input-with-action">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              required
+              minlength="8"
+              autocomplete="new-password"
+              placeholder="••••••••"
+              aria-describedby="passwordHelp"
+            />
+          </div>
+          <small id="passwordHelp" class="helper-text"
+            >At least 8 characters. Use letters, numbers & symbols.</small
+          >
+        </label>
+
+        <button type="submit">Create account</button>
+
+        <p class="form-footer">
+          Already have an account? <a href="/auth/login">Sign in</a>
+        </p>
+
+        <noscript class="helper-text"
+          >JavaScript is disabled — server-side validation will apply.</noscript
+        >
+      </form>
+    </main>
+  </body>
+</html>

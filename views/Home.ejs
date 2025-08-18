@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Home • Chat UI</title>
+    <link rel="stylesheet" href="/styles/chat-ui.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <input
+        type="checkbox"
+        id="navToggle"
+        class="nav-toggle visually-hidden"
+        aria-hidden="true"
+      />
+      <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+        <div class="brand">
+          <p class="brand-title">Chat UI</p>
+          <label class="btn" for="navToggle" aria-label="Close sidebar"
+            >✕</label
+          >
+        </div>
+        <button class="btn btn-primary new-chat" id="newChat">
+          + New chat
+        </button>
+        <nav class="history" aria-label="Conversations">
+          <a href="#">Welcome conversation</a>
+          <a href="#">UI ideas for portfolio</a>
+          <a href="#">Travel plan for Japan</a>
+        </nav>
+      </aside>
+      <label
+        class="overlay"
+        for="navToggle"
+        aria-label="Close sidebar overlay"
+      ></label>
+
+      <main class="chat" role="main">
+        <header class="topbar">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <label class="btn" for="navToggle" aria-label="Open sidebar"
+              >☰</label
+            >
+            <div class="topbar-title">Where should we begin?</div>
+          </div>
+          <a class="btn" href="/auth/login">Sign in</a>
+        </header>
+
+        <section id="messages" class="messages" aria-live="polite">
+          <div
+            class="welcome"
+            aria-hidden="true"
+            style="
+              max-width: 850px;
+              margin: 48px auto 12px;
+              padding: 0 8px;
+              text-align: center;
+            "
+          >
+            <h1 style="margin: 0 0 8px; font-size: 22px">
+              Where should we begin?
+            </h1>
+            <p style="margin: 0; color: var(--color-muted)">
+              Pick a prompt below or ask your own question.
+            </p>
+          </div>
+
+          <div
+            class="suggestions"
+            style="
+              max-width: 850px;
+              margin: 14px auto 32px;
+              padding: 0 8px;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+              gap: 10px;
+            "
+          >
+            <button
+              class="btn"
+              data-prompt="Explain JavaScript closures with a simple example"
+            >
+              Explain JavaScript closures with a simple example
+            </button>
+            <button
+              class="btn"
+              data-prompt="Refactor this function to be more readable"
+            >
+              Refactor this function to be more readable
+            </button>
+            <button
+              class="btn"
+              data-prompt="Create a study plan to learn Node.js in 2 weeks"
+            >
+              Create a study plan to learn Node.js in 2 weeks
+            </button>
+            <button
+              class="btn"
+              data-prompt="Write an Express route that validates input and returns JSON"
+            >
+              Write an Express route that validates input and returns JSON
+            </button>
+          </div>
+        </section>
+
+        <footer class="composer">
+          <form id="composerForm" class="composer-inner" autocomplete="off">
+            <div class="textbox">
+              <textarea
+                id="prompt"
+                rows="1"
+                placeholder="Send a message"
+                aria-label="Message"
+              ></textarea>
+              <button
+                class="btn btn-primary send-btn"
+                id="send"
+                type="submit"
+                aria-label="Send"
+              >
+                ➤
+              </button>
+            </div>
+          </form>
+        </footer>
+      </main>
+    </div>
+    <script src="/scripts/home.js" defer></script>
+  </body>
+</html>
