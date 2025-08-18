@@ -32,6 +32,14 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Socket.IO client init (logs to console on connect)
+    if (typeof io !== "undefined") {
+      const socket = io();
+      socket.on("connect", () => {
+        console.log("Socket connected:", socket.id);
+      });
+    }
+
     const form = document.getElementById("composerForm");
     const textarea = document.getElementById("prompt");
     const messagesEl = document.getElementById("messages");
