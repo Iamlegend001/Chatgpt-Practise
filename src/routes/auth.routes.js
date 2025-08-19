@@ -19,4 +19,4 @@ router
 router.route("/login").get(getLoginController).post(postLoginController);
 router.route("/logout").get(userLogout)
 
-module.exports = router;
+module.exports = router;jnckdsjnjandnc al
